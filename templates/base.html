@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.c
-    ss"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    ></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/fontawesome/
-    4.7.0/css/font-awesome.min.css" />
-    <title>{% block title %} Electronics Commerce {% endblock %}</title>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/fontawesome/4.7.0/css/font-awesome.min.css" />
+    <title>
+        {% block title %} Electronics Commerce {% endblock %}
+    </title>
     <style type="text/css">
     .min-h-100 { min-height: 100%; }
     </style>
@@ -46,7 +43,7 @@
                 <li><a href="/"><i class="fa fa-search" aria-hidden="true"></i> Product</a></li>
                 <li><a href="/cart/"><i class="fa fa-shopping-cart" ariahidden="true"></i> Cart</a></li>
             </ul>
-{           % endblock %}
+            {% endblock %}
         </div>
         <div id="content" class="min-h-100 bg-light col-sm-9 col-md-9 col-lg-9">
             {% block content %}{% endblock %}

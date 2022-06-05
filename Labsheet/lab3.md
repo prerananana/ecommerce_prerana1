@@ -6,7 +6,7 @@
 
 ### Introduction
 
-In our second lab, we added a brand, product and category in the product module which has a structure of the er diagram as shown below:
+In our first lab, we created a product module. Now, we add a brand, product and category in the product module which has a structure of the er diagram as shown below:
 
 ![Er diagram, the product module](/images_lab2/ER-product_module.png)
 ### Objectives
