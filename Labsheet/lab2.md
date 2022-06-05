@@ -8,7 +8,7 @@
 
 In our first lab, we created a product module. Now, we add a brand, product and category in the product module which has a structure of the er diagram as shown below:
 
-![Er diagram, the product module](/ecommerce_prerana1/Labsheet/images_lab2/ER-product_module.png)
+![Er diagram, the product module](/Labsheet/images_lab2/ER-product_module.png)
 ### Objectives
 
 - To add Product, Brand and Category models
@@ -73,25 +73,25 @@ In our first lab, we created a product module. Now, we add a brand, product and 
 
 - **Adding the models Brand, Category and Product**
 
-![](/ecommerce_prerana1/Labsheet/images_lab2/three_models.png)
+![](/Labsheet/images_lab2/three_models.png)
 
 - **The Brand model**
 
-![](/ecommerce_prerana1/Labsheet/images_lab2/brand.png)
+![](/Labsheet/images_lab2/brand.png)
 
-![](/ecommerce_prerana1/Labsheet/images_lab2/brand_detailed.png)
+![](/Labsheet/images_lab2/brand_detailed.png)
 
 - **The Category model**
 
-![](/ecommerce_prerana1/Labsheet/images_lab2/category.png)
+![](/Labsheet/images_lab2/category.png)
 
-![](/ecommerce_prerana1/Labsheet/images_lab2/category_detailed.png)
+![](/Labsheet/images_lab2/category_detailed.png)
 
 - **The Product model**
 
-![](/ecommerce_prerana1/Labsheet/images_lab2/Product.png)
+![](/Labsheet/images_lab2/Product.png)
 
-![](/ecommerce_prerana1/Labsheet/images_lab2/productdetailed.png)
+![](/Labsheet/images_lab2/productdetailed.png)
 
 ### Conclusion
 
