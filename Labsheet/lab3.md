@@ -6,61 +6,74 @@
 
 ### Introduction
 
-In our first lab, we created a product module. Now, we add a brand, product and category in the product module which has a structure of the er diagram as shown below:
+In our second lab, we created three models brand, category and product in product_module. Now, add the list display and search fields on each of the three models.
 
-![Er diagram, the product module](/images_lab2/ER-product_module.png)
 ### Objectives
 
-- To add Product, Brand and Category models
-- To get more information about adding models and how models.py works
-- To get more information about the admin.py, models.py as well as other files that django framework provides
-- To perform CRUD operations on all three models
-
+- To add list display, search field and list filter in product model
+- To add list display and search field  in brand and category model
+s
 ### Procedure
 
-- **Adding the model Brand in the models.py**
+- **Adding the following code to product model of admin.py**
 
 ```
-  class Brand(models.Model):
-    name = models.CharField(max_length=200)
-    is_active = models.BooleanField()
-```
-- **Adding the model Category in the models.py**
-
-```
-  class Category(models.Model):
-    name = models.CharField(max_length=200)
-    is_active = models.BooleanField()
+  class ProductAdmin(admin.ModelAdmin):
+    list_display = ["name", "price", "brand", "category",]
+    search_fields = ["name", "price", "brand__name", "category__name",]
+    list_filter = ["brand","category",]
+    readonly_fields = ["quantity",]
   class Meta:
-    verbose_name_plural = "Categories"
+    model = Product
+  admin.site.register(Product, ProductAdmin)
 ```
-- **Adding the model Product in the models.py**
+- **Adding the following code to brand model of admin.py**
 
 ```
+  class BrandAdmin(admin.ModelAdmin):
+    list_display = ["name", "is_active",]
+    search_fields =["name", "is_active",]
+  class Meta:
+    model = Brand
+  admin.site.register(Brand, BrandAdmin)
+```
+- **Adding the following code to category model of admin.py**
+
+```
+  class CategoryAdmin(admin.ModelAdmin):
+    list_display = ["name", "is_active",]
+    search_fields =["name", "is_active",]
+  class Meta:
+    model = Category
+  admin.site.register(Category, CategoryAdmin)
+```
+- **Adding the following code to product class of models.py to add a field 'image_tag'**
+
+```
+  ...
+  from django.utils.html import mark_safe
+  ...
   class Product(models.Model):
-    name = models.CharField(max_length=200)
-    price = models.FloatField()
-    quantity = models.IntegerField()
-    image_url = models.CharField(max_length=500)
-    color_code = models.CharField(max_length=20)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    registered_on = models.DateTimeField()
-    is_active = models.BooleanField()
+  ...
+    def image_tag(self):
+      return mark_safe(f'<img src="{self.image_url}" width="50"
+      height="50" />')
+      image_tag.short_description = "Product"
+    def __str__(self):
+      return self.name
 ```
-- **Making changes to the db by performing migrations**
+- **Making the following changes in product model of admin.py to display the image tag**
 
 ```
-  python manage.py makemigrations
-  python manage.py migrate
-```
-- **Adding the following code to admin.py for enabling CRUD operations in the admin site**
-
-```
-  from .models import Brand, Category, Product
-  admin.site.register(Brand)
-  admin.site.register(Category)
-  admin.site.register(Product)
+  ...
+  class ProductAdmin(admin.ModelAdmin):
+    list_display=["image_tag", "name", "price", "brand", "category",]
+    search_fields = ["name", "price", "brand__name", "category__name",]
+    list_filter = ["brand","category","price",]
+    # readonly_fields = ["quantity",]
+  class Meta:
+    model = Product
+  admin.site.register(Product, ProductAdmin)
 ```
 
 - **Finally, running the project and performing CRUD operations on Brand, Category and Product**
@@ -71,28 +84,18 @@ In our first lab, we created a product module. Now, we add a brand, product and 
 
 ### Outputs
 
-- **Adding the models Brand, Category and Product**
-
-![](/images_lab2/three_models.png)
-
 - **The Brand model**
 
-![](/images_lab2/brand.png)
-
-![](/images_lab2/brand_detailed.png)
+![](/Labsheet/images_lab3/brand.png)
 
 - **The Category model**
 
-![](/images_lab2/category.png)
-
-![](/images_lab2/category_detailed.png)
+![](/Labsheet/images_lab3/category.png)
 
 - **The Product model**
 
-![](/images_lab2/product.png)
-
-![](/images_lab2/productdetailed.png)
+![](/Labsheet/images_lab3/products.png)
 
 ### Conclusion
 
-Therefore, in our third lab we created the models Brand, Category and Product for our ecommerce site. All the three models inherits models.Model. The product and brand, category model are related to each other through one to many relationship. We have also used different data types provided by django. 
+As a result, we used multiple codes in this lab to create a search bar for products, brands, and categories, as well as display images for the products on the e-commerce site.

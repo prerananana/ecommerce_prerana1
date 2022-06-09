@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.db.models import Q
 from .models import Product, Brand, Category
 
+def test(request):
+    return render(request, 'test.html', {})
+
 # Create your views here.
 def index(request):
     if request.method == "GET":
