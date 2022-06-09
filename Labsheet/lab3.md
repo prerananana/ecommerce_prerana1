@@ -11,8 +11,7 @@ In our second lab, we created three models brand, category and product in produc
 ### Objectives
 
 - To add list display, search field and list filter in product model
-- To add list display and search field  in brand and category model
-s
+- To add list display and search field  in brand and category models
 ### Procedure
 
 - **Adding the following code to product model of admin.py**
