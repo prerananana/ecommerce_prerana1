@@ -5,6 +5,9 @@ from .models import Product, Brand, Category
 def test(request):
     return render(request, 'test.html', {})
 
+def index1(request):
+    return render(request, 'index1.html', {})
+
 # Create your views here.
 def index(request):
     if request.method == "GET":
