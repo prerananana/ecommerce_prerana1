@@ -51,4 +51,4 @@ In this lab of E-commerce we continued the lab by adding _index.html_ and _base.
 ![](/Labsheet/images_lab4/index_page2.png)
 
 ## Conclusion
-Therefore, in this lab we added base.html and index.html for the user end of our ecommerce website. I personally also added a bootstrap template and implemented it through static files
+Therefore, in this lab we added base.html and index.html for the user end of our ecommerce website. I personally also added a bootstrap template and implemented it through static files.
