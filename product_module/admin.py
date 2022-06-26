@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Brand, Category, Product
+from .models import Brand, Category, Product, CartItem
 class ProductAdmin(admin.ModelAdmin):
     list_display = ["image_tag", "name", "price", "brand", "category",]
     search_fields = ["name", "price", "brand__name", "category__name",]
@@ -24,3 +24,6 @@ class BrandAdmin(admin.ModelAdmin):
 class Meta:
     model = Brand
 admin.site.register(Brand, BrandAdmin)
+
+
+admin.site.register(CartItem)

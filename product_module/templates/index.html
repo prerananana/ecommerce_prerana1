@@ -5,26 +5,6 @@
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg">
     <div>
-        <!-- Links -->
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link text-dark" href="/ ">All</a>
-            </li>
-            {% for category in categories %}
-            <li class="nav-item">
-                <a class="nav-link text-dark"
-                href="/?category={{category.id}}">{{category.name}}</a>
-            </li>
-            {% endfor %}
-            {% for brand in brands %}
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="/?brand={{brand.id}}">{{brand.name}}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    <!-- Links -->
-    </div>
-    <div>
         <form class="form-inline" method="POST">
             {% csrf_token %}
             <div>
@@ -36,64 +16,50 @@
     </div>
 </nav>
 <!--/.Navbar-->
-{% for product in products %}
-<div class="row border bg-light">
-    <div class="col-md-4">
-        <div class="text-center">
-            <img src="{{ product.image_url }}" style="height:200px; width:auto;" alt="{{ product.name }}">
+
+
+<!-- Products tab & slick -->
+<div class="col-md-12">
+    <div class="row">
+        <div class="products-tabs">
+            <!-- tab -->
+            <div id="tab1" class="tab-pane active">
+                <div class="products-slick" data-nav="#slick-nav-1">
+                    <!-- product -->
+                    {% for product in products %}
+                    <div class="product">
+                        <div class="product-img">
+                            <img src="{{ product.image_url }}" alt="">
+                            <div class="product-label">
+                                <span class="sale">0%</span>
+                                <span class="new">NEW</span>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <p class="product-category">{{ product.category.name }}</p>
+                            <p class="product-category">{{ product.brand.name }}</p>
+                            <h3 class="product-name"><a href="#">{{ product.name }}</a></h3>
+                            <h4 class="product-price">$ {{ product.price }} </h4>
+                        </div>
+                        <div class="add-to-cart">
+                            <form class="d-flex" action="/cart" method="GET">
+                                <!-- Default input -->
+                                <input type="hidden" name="id" value="{{product.id}}" />
+                                <input type="number" name="qty" value="1" arialabel="
+                                Search" class="form-control" style="width: 100px">\
+                                <button id="btn-add-to-cart" type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /product -->
+                    {% endfor %}
+                </div>
+                <div id="slick-nav-1" class="products-slick-nav"></div>
+            </div>
+            <!-- /tab -->
         </div>
     </div>
-    <div class="col-md-3">
-        <span class="btn btn-danger disabled">{{ product.brand.name}}</span>
-        <span class="btn btn-info disabled">{{ product.category.name}}</span>
-        <h3>{{ product.name }}</h3>
-        <h4 class="bold text-secondary">
-            <strong>NRs. {{ product.price }}</strong>
-        </h4>
-        <form class="d-flex" action="/cart" method="GET">
-            <!-- Default input -->
-            <input type="hidden" name="id" value="{{product.id}}" />
-            <input type="number" name="qty" value="1" arialabel="
-            Search" class="form-control" style="width: 100px">
-            <button id="btn-add-to-cart" class="btn btn-primary btn-md"
-            type="submit" data-toggle="modal" data-target="#cart-model"><i class="fa fashopping-
-            cart" aria-hidden="true"></i> Add to cart</button>
-        </form>
-    </div>
-    <div class="col-md-5">
-        <table class="table table-sm">
-            <tr>
-                <td>Available Quantity</td>
-                <td>{{product.quantity}}</td>
-            </tr>
-            <tr>
-                <td>Color Code</td>
-                <td><div style="height: 25px; width: 25px; backgroundcolor: {{ product.color_code }}; "></div></td>
-            </tr>
-            <tr>
-                <td>Brand</td>
-                <td>{{ product.brand.name }}</td>
-            </tr>
-            <tr>
-                <td>Category</td>
-                <td>{{ product.category.name }}</td>
-            </tr>
-            <tr>
-                <td>Registered On</td>
-                <td>{{ product.registered_on }}</td>
-            </tr>
-            <tr>
-                <td>Is Active</td>
-                <td>
-                {% if product.is_active %}
-                <input type="checkbox" checked />
-                {% else %}
-                <input type="checkbox" />
-                {% endif %}
-                </td>
-            </tr>
-        </table>
-    </div>
 </div>
-{% endfor %}
+<!-- Products tab & slick -->
+
 {% endblock %}
