@@ -8,9 +8,7 @@
         <form class="form-inline" method="POST">
             {% csrf_token %}
             <div>
-                <input name="query" class="form-control" type="text"
-                placeholder="Search/enter price-range" aria-label="Search"
-                value="{{search_query}}">
+                <input name="query" class="form-control" type="text" placeholder="Search/enter price-range" aria-label="Search" value="{{search_query}}">
             </div>
         </form>
     </div>
@@ -29,7 +27,7 @@
                     {% for product in products %}
                     <div class="product">
                         <div class="product-img">
-                            <img src="{{ product.image_url }}" alt="">
+                            <img src="{{ product.image_url }}" width="{{ image.width }}" height="{{ image.height }}" >
                             <div class="product-label">
                                 <span class="sale">0%</span>
                                 <span class="new">NEW</span>
@@ -39,7 +37,7 @@
                             <p class="product-category">{{ product.category.name }}</p>
                             <p class="product-category">{{ product.brand.name }}</p>
                             <h3 class="product-name"><a href="#">{{ product.name }}</a></h3>
-                            <h4 class="product-price">$ {{ product.price }} </h4>
+                            <h4 class="product-price">NRs. {{ product.price }} </h4>
                         </div>
                         <div class="add-to-cart">
                             <form class="d-flex" action="/cart" method="GET">
