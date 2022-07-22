@@ -54,7 +54,7 @@ def removecart(request, id):
 
 def success_page(request):
     message = request.session["message"]
-    return render(request, "success.html", {"message": message})
+    return render(request, "success_page.html", {"message": message})
 
 def error_page(request):
     message = request.session["message"]

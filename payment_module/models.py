@@ -16,8 +16,14 @@ class Invoice(models.Model):
     payment_date = models.DateTimeField()
     total_amount = models.FloatField()
 
+    def __str__(self) -> str:
+        return self.total_amount
+
 class InvoiceDetail(models.Model):
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     sub_amount = models.FloatField()
+
+    def __str__(self) -> str:
+        return self.product.name
